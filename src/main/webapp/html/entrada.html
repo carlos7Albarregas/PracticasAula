@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ejercicio saludo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/estilosSaludos.css" type="text/css">
+    </head>
+    <body>
+        <form action="../jsp/JSPSaludos.jsp" method="post">
+            <div id="contenedor">
+                <label for="usuario">Nombre</label>
+                <input id='usuario' name='usuario' type="text" placeholder="Introduce tu nombre"/>
+                <br/>
+
+                <input type="radio" name="est" value="Hombre" checked="checked" />
+                    <label id="solt">Hombre</label>
+                    <input type="radio" name="est" value="Mujer" />
+                    <label id="cas">Mujer</label>
+                    
+                    <input type="submit" name="Submit" id="button" value="Enviar"/>
+            </div>
+        </form>
+    </body>
+</html>

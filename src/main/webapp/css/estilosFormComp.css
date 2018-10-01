@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21-sep-2018, 17:48:58
+    Author     : Carlos
+*/
+body{
+    font-family: 'PT Sans';
+    color: white;
+    background-color: #076a6a;
+}
+h1{
+    text-align: center;
+}
+div{
+    padding: 1em;
+    margin:1em;
+    text-align: left;
+    background-color: #3E885B;
+}
+label, input{
+    margin:.5em;
+}

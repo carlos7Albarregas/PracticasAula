@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Formulario simple</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/estilosForm.css" type="text/css">
+    </head>
+    <body>
+        <div id="contenedor">
+            <form action="../ServletForm" method="post"> <!--aqui se pone el servlet -->
+                <fieldset>
+                    <legend>
+                        Datos personales
+                    </legend>
+                    
+                    <label for="usuario">Usuario</label>
+                    <input id='usuario' name='usuario' type="text" placeholder="Introduce tu usuario"/>
+                    <br/>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="Introduce tu email"/>
+                    <br/>
+                    <label for="pulsa">Pulsa y marca</label>
+                    <input type="checkbox" id="pulsa" name="pulsa" value="se ha marcado"/>
+                    <br/>
+                    
+                    <input type="submit" name="Submit" id="button" value="enviar"/>
+                </fieldset>
+            </form>
+            
+        </div>
+    </body>
+</html>

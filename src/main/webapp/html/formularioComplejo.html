@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>formulario complejo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="../css/estilosFormComp.css" type="text/css">
+    </head>
+    <body>
+        <h1>Formulario Complejo</h1>
+        <div>
+        <form action="../ServletFormComp" method="post">
+            <fieldset>
+                <legend>Datos personales</legend>
+                <label for="usuario">Usuario</label>
+                <input id='usuario' name='usuario' type="text" placeholder="Introduce tu usuario"/>  
+                <br/>
+                <label for="pass">Password</label>
+                <input id="pass" name="pass" type="password"/>
+                <br/>
+                <label id="edad">Edad</label>            
+                <input name="edad" type="number" min="18" max="30"/>
+            </fieldset>
+            
+            <fieldset>
+                
+                <legend>Otros datos</legend>
+                <label id="princ">Estado civil</label>
+                <input type="radio" name="est" value="Soltero" checked="checked" />
+                <label id="solt">Soltero</label>
+                <input type="radio" name="est" value="Casado" />
+                <label id="cas">Casado</label>
+                <input type="radio" name="est" value="Viudo" />
+                <label id="viud">Viudo</label>
+                <input type="radio" name="est" value="Divorciado" />
+                <label id="divo">Divorciado</label>
+                <br/>
+                <label id="afi">Aficiones (uno o varios, CTRL)</label>
+                <br/>
+                <select name="aficiones" multiple="multiple">
+
+                    <option selected="selected">Deporte</option>
+                    <option>Musica</option>
+                    <option>Informatica</option>
+                    <option>Viajes</option>
+                    <option>Tiendas</option>
+                    <option>Juegos</option>
+                    
+                </select>
+                <br/>
+                <label id="coment">Comentarios</label>
+                <br/>
+                <textarea id="coment" rows="3" cols="80" placeholder="Ponga su comentario"></textarea>
+                
+            </fieldset>
+            
+            <fieldset>
+                <legend>Medios Tecnologicos</legend>
+                <label id="text">Dispones de internet?</label>
+                <input type="radio" name="internet" checked="checked" value="si" />
+                Si
+                <input type="radio" name="internet" value="no"/>
+                No
+                <br/>
+                <label id="so" >Elige uno</label>
+                <br/>
+                <select name="sistemas">
+
+                    <option selected="selected">Windows</option>
+                    <option>Linux</option>
+                    <option>Macintosh</option>
+                    <option>Sollaris</option>
+                    
+                </select>
+                
+            </fieldset>
+        
+            <br/>
+            <input type="submit" name="Submit" id="button" value="Enviar"/>
+            <input type="reset" value="Limpiar formulario">
+        </form>
+            </div>
+    </body>
+</html>

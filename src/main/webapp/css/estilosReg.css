@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-sep-2018, 17:37:37
+    Author     : Carlos
+*/
+body{
+    font-family: sans-serif;
+    background: #3A606E;
+    color: white;
+}
+legend{
+    color:greenyellow;
+}
+#primercuadro{
+    background: #607B7D;
+    margin:1em;
+    padding: 1em; 
+}
+#segundo{
+    margin:1em;
+    background: #828E82;
+}
+#tercero{
+    margin:1em;
+    background: #79BCB8;
+}
+input
+{
+    border: 1em;
+    margin:.5em;
+}
+[type="submit"], [type="reset"]
+{
+    border: 2px solid red;
+    background: black;
+    color: white;
+}
+[name="aficiones"]
+{
+    margin-left: 7.6em;
+}
