@@ -42,6 +42,6 @@
         <div>
             <h2>Buen<%=saludo %> <%=tratamiento %> <%= request.getParameter("usuario")%> </h2>
         </div>
-        
+        <p><a href='../index.html'>Vuelta al menu inicial</a></p>
     </body>
 </html>
