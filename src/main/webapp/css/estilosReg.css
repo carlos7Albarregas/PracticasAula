@@ -8,12 +8,14 @@ and open the template in the editor.
     Author     : Carlos
 */
 body{
-    font-family: sans-serif;
+    font-family: serif;
     background: #3A606E;
     color: white;
 }
 legend{
+    display: block;
     color:greenyellow;
+    background: black;
 }
 #primercuadro{
     background: #607B7D;

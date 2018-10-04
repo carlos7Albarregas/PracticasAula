@@ -328,7 +328,6 @@ public class ServletRegistro extends HttpServlet {
                 out.println("<p><a href='index.html'>Vuelta al menu inicial</a></p>");
             }
             out.println("</div>");
-            out.println("<h1>Servlet ServletRegistro at " + request.getContextPath() + "</h1>");
 
             out.println("</body>");
             out.println("</html>");
