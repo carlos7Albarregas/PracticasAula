@@ -65,7 +65,7 @@ public class ServletRegistro extends HttpServlet {
                 
                 out.println("<p><strong>DATOS INCORRECTOS</strong></p>");
                 
-                out.println("<form action=ServletRegistro method='post'>");
+                out.println("<form action='ServletRegistro' method='post'>");
                 out.println("<fieldset id='primercuadro'>");
                 
                 out.println("<legend>Informacion Personal</legend>");
@@ -214,7 +214,8 @@ public class ServletRegistro extends HttpServlet {
                     /*Simplemente aqui lo que hago es recoger lo que haya seleccionado el usuario. Para ello indicandolo
                     en la propiedad value y selected para que lo seleccione lo tendriamos ya*/
                     out.println("<select name='dia' id='dia'>");
-                    out.println("<option disabled value="+dia+" selected>"+dia+"</option>");
+                    
+                    out.println("<option value="+dia+" selected>"+dia+"</option>");
                     out.println("<option value='1'>1</option>");
                     out.println("<option value='2'>2</option>");
                     out.println("<option value='3'>3</option>");
@@ -250,7 +251,7 @@ public class ServletRegistro extends HttpServlet {
                     out.println("</select>");
                     
                     out.println("<select name='mes' id='mes'>");
-                    out.println("<option disabled value="+mes+" selected>"+mes+"</option>");
+                    out.println("<option value="+mes+" selected>"+mes+"</option>");
                     out.println("<option value='1'>Enero</option>");
                     out.println("<option value='2'>Febrero</option>");
                     out.println("<option value='3'>Marzo</option>");
@@ -266,7 +267,7 @@ public class ServletRegistro extends HttpServlet {
                     out.println("</select>");
                     
                     out.println("<select name='anyo' id='anyo'>");
-                    out.println("<option disabled value="+anio+" selected>"+anio+"</option>");
+                    out.println("<option value="+anio+" selected>"+anio+"</option>");
                     out.println("<option value='1970'>1970</option>");
                         out.println("<option value='1971'>1971</option>");
                         out.println("<option value='1972'>1972</option>");
@@ -355,16 +356,28 @@ public class ServletRegistro extends HttpServlet {
                 
             out.println("<legend>Informacion general</legend>");
             out.println("<label for='pref'>Preferencias</label><br/>");
-               
-            out.println("<input type='checkbox' name='pref' value='deporte' />Deporte");
-            out.println("<br/>");
-            out.println("<input type='checkbox' name='pref' value='lectura' />Lectura");
-            out.println("<br/>");
-            out.println("<input type='checkbox' name='pref' value='cine' />Cine");    
-            out.println("<br/>");
-            out.println("<input type='checkbox' name='pref' value='viajes' />Viajes");   
-            out.println("<br/>");
- 
+            
+            String[] pref=request.getParameterValues("pref");
+            String[] eleccion={"deporte", "lectura", "cine" ,"viajes"};
+                
+            for(int i=0;i<eleccion.length;i++)
+            {
+                
+                out.println("<input type='checkbox' name='pref' value="+eleccion[i]);
+                
+                for(int j=0;j<pref.length;j++)
+                {
+                    if(eleccion[i].equals(pref[j]))
+                    {
+                        out.println("checked");
+                        
+                    }
+                    
+                }
+                out.println("/>"+eleccion[i]);
+                out.println("<br/>");
+            }
+            
             out.println("</fieldset>");
             
             out.println("<input type='submit' name='Submit' id='button' value='Enviar'/>");
@@ -494,6 +507,7 @@ public class ServletRegistro extends HttpServlet {
             else{
             //MISMA LOGICA SOLO QUE AL NO SER BISIESTO FEBRERO TIENE 28
                 int[] meses={31,28,31,30,31,30,31,31,30,31,30,31};
+                
                 int fechaDia=Integer.parseInt(dia);
                 int fechaMes=Integer.parseInt(mes);
                 if(fechaDia <= meses[fechaMes-1])
@@ -524,7 +538,9 @@ public class ServletRegistro extends HttpServlet {
     }// </editor-fold>
 
     public boolean esBisiesto(String anyo) {
+        
         int anio = Integer.parseInt(anyo);
+        
         if ((anio % 4 == 0) && ((anio % 100 != 0) || (anio % 400 == 0))) {
             return true;
         } else {

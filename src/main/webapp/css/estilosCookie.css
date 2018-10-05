@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-oct-2018, 0:52:14
+    Author     : Carlos
+*/
+body{
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    border: 10px
+}
+div{
+    border: 4px solid #FFA69E;
+    color: white;
+    margin: 5px;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
+    background-color: #AA4465;
+}
+a{
+    color: white;
+    background-color: red;
+}
+
+input{
+    margin: 6px;
+}
+input[name='valorCookie']
+{
+    margin-left: 1.8em;
+    
+}

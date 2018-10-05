@@ -9,7 +9,8 @@ and open the template in the editor.
 */
 
 h1{
-    text-align: center
+    text-align: center;
+        
 }
 div{
    font-weight: bold; 
@@ -30,8 +31,10 @@ body{
 }
 #segundo{
     width: 40%;
+    
 }
 
 #tercero{
     width: 30%;
+    
 }
