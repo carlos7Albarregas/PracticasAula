@@ -359,22 +359,36 @@ public class ServletRegistro extends HttpServlet {
             
             String[] pref=request.getParameterValues("pref");
             String[] eleccion={"deporte", "lectura", "cine" ,"viajes"};
-                
-            for(int i=0;i<eleccion.length;i++)
+            
+            if(pref!=null)
             {
-                
-                out.println("<input type='checkbox' name='pref' value="+eleccion[i]);
-                
-                for(int j=0;j<pref.length;j++)
+                for(int i=0;i<eleccion.length;i++)
                 {
-                    if(eleccion[i].equals(pref[j]))
+
+                    out.println("<input type='checkbox' name='pref' value="+eleccion[i]+"");
+
+                    for(int j=0;j<pref.length;j++)
                     {
-                        out.println("checked");
                         
+                        if(eleccion[i].equals(pref[j]))
+                        {
+                            out.println("checked");
+
+                        }
+
                     }
-                    
+                    out.println("/>"+eleccion[i]);
+                    out.println("<br/>");
                 }
-                out.println("/>"+eleccion[i]);
+            }
+            else{  //Si esta null no ha marcado nada el usuario
+                out.println("<input type='checkbox' name='pref' value='deporte' />Deporte");
+                out.println("<br/>");
+                out.println("<input type='checkbox' name='pref' value='lectura' />Lectura");
+                out.println("<br/>");
+                out.println("<input type='checkbox' name='pref' value='cine' />Cine");    
+                out.println("<br/>");
+                out.println("<input type='checkbox' name='pref' value='viajes' />Viajes");   
                 out.println("<br/>");
             }
             
