@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 08-oct-2018, 12:01:30
+    Author     : Carlos
+*/
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+div{
+    
+    text-align: center;
+    font-size: 18px;
+    border: 3px solid black;
+    background-color: #E3D87E;
+    color: black;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 5em;
+}
+input{
+    margin: 1em;
+    padding: 6px;
+}
+a{
+    font-size: 16px;
+    background-color: blue;
+    color:white;
+    border: 2px solid black;
+    padding: 3px;
+    
+}
