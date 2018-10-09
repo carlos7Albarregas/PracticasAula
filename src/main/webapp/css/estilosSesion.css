@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09-oct-2018, 13:34:30
+    Author     : Carlos
+*/
+body{
+    font-size: 16px;
+    margin: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+div{
+    text-align: center;
+    margin-top: 5px;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    background-color: #F3EFF5;
+    border: 2px solid #454955;
+    margin-bottom: 5em;
+}
+a{
+    color: white;
+    background-color: blue;
+    padding: 2px;
+}
+
+input{
+    margin: 6px;
+    
+}
+input[type='submit']{
+    padding: 6px;
+}
+input[name='valorSesion']
+{
+    margin-left: 1.8em;
+}
+
