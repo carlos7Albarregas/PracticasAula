@@ -14,7 +14,25 @@
         <title>Menu Sesiones</title>
     </head>
     <body>
+        
         <div>
+            <%
+                
+                HttpSession sesion= request.getSession();
+                
+                if(sesion.getAttribute("mensaje")!=null){
+                    
+                    %>
+                    <h2><%=sesion.getAttribute("mensaje")%></h2>
+                    <%
+                    
+                }
+                else{
+                    %><h2> </h2>
+                    <%
+                }
+               
+                %>
             <form action="ControlSesiones.jsp" method="post">
                 
             <label for="nombre">Nombre de la sesion</label>
@@ -29,19 +47,8 @@
             <input type="submit" name="Submit" value="Consultar"/>
             <input type="submit" name="Submit" value="Eliminar"/>
             <br/>
-            <%
-                String cad=null;
+            
                 
-                if(request.getParameter("mensaje")!=null){
-                    
-                    cad=(request.getParameter("mensaje"));
-                }
-                else{
-                    cad="";
-                }
-               
-                %>
-                <h2><%=cad%></h2>
         </form>
         </div>
         <p><a href='../index.html'>Vuelta al menu inicial</a></p>

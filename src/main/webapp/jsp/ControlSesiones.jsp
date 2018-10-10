@@ -33,23 +33,27 @@ y luego ponemos setAtributte (creando previamente el objeto httpSession)
         {
             if(request.getParameter("Submit").equals("Crear"))
             {
-                sesion.setAttribute(nombre, valor);
+                sesion.setAttribute(nombre, valor); 
                 cadena="La sesion "+nombre+" ha sido creada con valor "+valor;
+                sesion.setAttribute("mensaje", cadena);
             }
             else if(request.getParameter("Submit").equals("Modificar"))
             {
                 //NO SE PUEDE MODIFICAR SI NO ESTA CREADA LA SESION
                 cadena="No existe aun la sesion y no se puede modificar";
+                sesion.setAttribute("mensaje", cadena);
             }
             else if(request.getParameter("Submit").equals("Consultar"))
             {
                 //NO SE PUEDE CONSULTAR SI NO ESTA CREADA LA SESION
                 cadena="No existe aun la sesion y no se puede consultar";
+                sesion.setAttribute("mensaje", cadena);
             }
             else if(request.getParameter("Submit").equals("Eliminar"))
             {
                 //NO SE PUEDE ELIMINAR SI NO ESTA CREADA LA SESION
                 cadena="No existe aun la sesion y no se puede eliminar";
+                sesion.setAttribute("mensaje", cadena);
             }
         }
         else{
@@ -58,17 +62,19 @@ y luego ponemos setAtributte (creando previamente el objeto httpSession)
             {
                 //LA SESION NO SE PUEDE REPETIR
                 cadena="La sesion "+nombre+" ya ha sido creada";
+                sesion.setAttribute("mensaje", cadena);
             }
             else if(request.getParameter("Submit").equals("Modificar"))
             {                
                 sesion.setAttribute(nombre, valor);
                 cadena="La sesion ha sido modificada";
-                
+                sesion.setAttribute("mensaje", cadena);
             }
             else if(request.getParameter("Submit").equals("Consultar"))
             {
                 
                 cadena="La sesion "+nombre+" tiene un valor "+sesion.getAttribute(nombre);
+                sesion.setAttribute("mensaje", cadena);
             }
             else if(request.getParameter("Submit").equals("Eliminar"))
             {
@@ -81,5 +87,6 @@ y luego ponemos setAtributte (creando previamente el objeto httpSession)
     else{
         cadena="";
     }
-    response.sendRedirect(url+"?mensaje="+cadena);
+    response.sendRedirect(url);
+    
     %>
