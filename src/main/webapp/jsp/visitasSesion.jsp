@@ -19,17 +19,14 @@
             String salida="";
             
             HttpSession sesion= request.getSession();
+            sesion.removeAttribute("mensaje");//elimino para evitar problemas con la cadena
+            
             Enumeration<String> sesiones=sesion.getAttributeNames();
             while(sesiones.hasMoreElements())
             {
                 nombre=sesiones.nextElement();
-                
-                if(!nombre.equals("mensaje")) //porque tengo una sesion por defecto que es mensaje
-                {
-                    valor = sesion.getAttribute(nombre);
-                    salida="La sesion "+nombre+" ha visitado la pagina "+valor+" veces";
-                }
-                
+                valor = sesion.getAttribute(nombre);  
+                salida="La sesion "+nombre+" ha visitado la pagina "+valor+" veces";
             }
             if(nombre.isEmpty())
             {
@@ -40,7 +37,7 @@
         <form action="visitasSesion.jsp" method="post">
             
             <div>
-                <h2><%=salida%></h2>
+                
                 <%
                     
                     if(!nombre.isEmpty() && request.getParameter("Submit")!=null)
@@ -48,10 +45,12 @@
                         if(request.getParameter("Submit").equals("Recargar"))
                         {
                             
-                            int cont=Integer.valueOf((String)valor);
+                            int cont=Integer.parseInt(valor.toString());
                             cont=cont+1;
-                            
-                            sesion.setAttribute(nombre, cont);
+                            valor=Integer.toString(cont);
+                            salida="La sesion "+nombre+" ha visitado la pagina "+valor+" veces";
+      
+                            sesion.setAttribute(nombre, valor);
                         }
                         else{
                             sesion.removeAttribute(nombre);
@@ -63,6 +62,7 @@
                     }
                     
                     %>
+                    <h2><%=salida%></h2>
                 <input type="submit" name="Submit" value="Recargar"/>
                 <input type="submit" name="Submit" value="Eliminar"/>
                 
