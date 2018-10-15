@@ -22,6 +22,8 @@
             <br/>
             <%
                 HttpSession sesion= request.getSession();
+                String [] valores= (String [])sesion.getAttribute("sesion");
+                
                 String cadena;
                 boolean res=true;
                 Cookie cookie=null;
@@ -37,24 +39,31 @@
                 
                 if(cookie!=null)
                 {
-                    //muestra creacion de la cookie
-                    res=false;
-                    %>
-                    <p>Nombre de usuario: <%=request.getParameter("usu") %></p>
-                    <p>Caducidad de la cookie: <%=cookie.getMaxAge() %></p>
-                    <a href="Logout.jsp?error='res'">Cerrar Sesion</a>
-                    <%
-                }
-                else{
+                    //muestra fecha ultimo acceso
                     Date acceso=new Date(sesion.getLastAccessedTime());
                     GregorianCalendar fecha=new GregorianCalendar();
                     fecha.setTime(acceso);
                     cadena=fecha.get(Calendar.DAY_OF_MONTH)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR)
                     +" a las "+fecha.get(Calendar.HOUR_OF_DAY)+":"+fecha.get(Calendar.MINUTE);
+                    
+                    res=false;
                     %>
-                    <p>Nombre de usuario: <%=request.getParameter("usu") %></p>
-                    <p>Contraseña: <%=request.getParameter("pass") %></p>
+                    <p>Nombre de usuario: <%=valores[0] %></p>
                     <p>Ultimo acceso: <%=cadena %></p>
+                    <a href="Logout.jsp?error='res'">Cerrar Sesion</a>
+                    <%
+                }
+                else{
+                    
+                    Date acceso=new Date(sesion.getCreationTime());
+                    GregorianCalendar fecha=new GregorianCalendar();
+                    fecha.setTime(acceso);
+                    cadena=fecha.get(Calendar.DAY_OF_MONTH)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR)
+                    +" a las "+fecha.get(Calendar.HOUR_OF_DAY)+":"+fecha.get(Calendar.MINUTE);
+                    %>
+                    <p>Nombre de usuario: <%=valores[0] %></p>
+                    <p>Contraseña: <%=valores[1] %></p>
+                    <p>Sesion creada: <%=cadena %></p>
                     <a href="Logout.jsp">Cerrar Sesion</a>
                     <%
                 }
