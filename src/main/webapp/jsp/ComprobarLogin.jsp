@@ -8,44 +8,68 @@
 <!DOCTYPE html>
 <%
     boolean res=false;
-    String [] valor=request.getParameterValues("recordar");
     HttpSession sesion= request.getSession();
+    String [] valores=new String[2];
+    valores[0]=request.getParameter("usu");
+    valores[1]=request.getParameter("pass");
     
-    if(valor!=null)
+    if(request.getParameter("recordar")!=null)
     {
-        sesion.setAttribute(request.getParameter("usu"),request.getParameter("pass"));
-        
-        Cookie cookie= new Cookie("creada", request.getParameter("usu"));
-        cookie.setMaxAge(60*60);
-        response.addCookie(cookie);
-        
-        request.getRequestDispatcher("InformacionLog.jsp").forward(request, response);
-    }
-    
-    if(request.getParameter("usu").isEmpty() || request.getParameter("pass").isEmpty())
-    {
-        res=true;
-        response.sendRedirect("Login.jsp?error="+res);
-    }
-    else{
-        
-        if(sesion.getAttribute(request.getParameter("usu"))==null)
+        if(sesion.getAttribute("sesion")!=null) //significa que hay ya una sesion abierta
         {
-            sesion.setAttribute(request.getParameter("usu"),request.getParameter("pass"));
-            request.getRequestDispatcher("InformacionLog.jsp").forward(request, response);
+            String [] comprobar= (String[])sesion.getAttribute("sesion"); //obtenemos valores de la sesion
+                
+                if(request.getParameter("usu").equals(comprobar[0]) && request.getParameter("pass").equals(comprobar[1]))
+                {
+                    sesion.setAttribute("sesion", valores);
+                    response.sendRedirect("InformacionLog.jsp");
+                }
+                else{
+                    res=true;
+                    response.sendRedirect("Login.jsp?error="+res);
+                }
         }
-        else{
-            //hay que buscar y comprobar que el usuario mete bien usuario y contraseña
-            
-            if(request.getParameter("pass").equals(sesion.getAttribute(request.getParameter("usu"))))
+        else{ //NO HAY SESION
+            sesion.setAttribute("sesion",valores);
+
+            Cookie cookie= new Cookie("creada", request.getParameter("usu"));
+            cookie.setMaxAge(60*60);
+            response.addCookie(cookie);
+
+            response.sendRedirect("InformacionLog.jsp");
+        }
+    }
+    else //si NO ha marcado el checkbox
+    {
+        
+        if(request.getParameter("usu").isEmpty() || request.getParameter("pass").isEmpty())
+        {//si esta vacio algun campo vuelta al index
+            res=true;
+            response.sendRedirect("Login.jsp?error="+res);
+        }
+        else
+        {
+        
+            if(sesion.getAttribute("sesion")==null)//me creo la sesion si no hay ninguna
             {
-                sesion.setAttribute(request.getParameter("usu"),request.getParameter("pass"));
-                request.getRequestDispatcher("InformacionLog.jsp").forward(request, response);
+                sesion.setAttribute("sesion", valores);
+                response.sendRedirect("InformacionLog.jsp");
             }
             else{
-                res=true;
-                response.sendRedirect("Login.jsp?error="+res);
+            //hay que buscar y comprobar que el usuario mete bien usuario y contraseña
+                String [] comprobar= (String[])sesion.getAttribute("sesion"); //obtenemos valores de la sesion
+                
+                if(request.getParameter("usu").equals(comprobar[0]) && request.getParameter("pass").equals(comprobar[1]))
+                {
+                    sesion.setAttribute("sesion", valores);
+                    response.sendRedirect("InformacionLog.jsp");
+                }
+                else{
+                    res=true;
+                    response.sendRedirect("Login.jsp?error="+res);
+                }
             }
         }
     }
+    
     %>

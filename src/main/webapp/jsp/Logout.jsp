@@ -14,7 +14,7 @@
     <body>
         <%
         HttpSession sesion= request.getSession();
-        sesion.removeAttribute(request.getParameter("usu"));
+        sesion.removeAttribute("sesion");
         sesion.invalidate();
         if(request.getParameter("error")!=null)
         {
