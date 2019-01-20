@@ -18,7 +18,6 @@
         if(sesion.getAttribute("sesion")!=null) //significa que hay ya una sesion abierta
         {
             String [] comprobar= (String[])sesion.getAttribute("sesion"); //obtenemos valores de la sesion
-                
                 if(request.getParameter("usu").equals(comprobar[0]) && request.getParameter("pass").equals(comprobar[1]))
                 {
                     sesion.setAttribute("sesion", valores);

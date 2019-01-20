@@ -51,6 +51,7 @@
                     <p>Nombre de usuario: <%=valores[0] %></p>
                     <p>Ultimo acceso: <%=cadena %></p>
                     <a href="Logout.jsp?error='res'">Cerrar Sesion</a>
+                    <a href="../index.html">Volver menu principal</a>
                     <%
                 }
                 else{
@@ -65,6 +66,7 @@
                     <p>Contraseña: <%=valores[1] %></p>
                     <p>Sesion creada: <%=cadena %></p>
                     <a href="Logout.jsp">Cerrar Sesion</a>
+                    <a href="../index.html">Volver menu principal</a>
                     <%
                 }
                 %>
